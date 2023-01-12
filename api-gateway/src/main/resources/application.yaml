@@ -1,0 +1,55 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: API-GATEWAY
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: 'http://localhost:8080/auth/realms/test'
+  cloud:
+    gateway:
+      routes:
+       - id: PRODUCT-SERVICE
+         uri: lb://PRODUCT-SERVICE
+         predicates:
+           - Path=/api/v1/product/**
+       - id: ORDER-SERVICE
+         uri: lb://ORDER-SERVICE
+         predicates:
+           - Path=/api/v1/order/**
+       - id: EUREKA-SERVER
+         uri: lb://EUREKA-SERVER
+         predicates:
+           - Path=/eureka/**
+       - id: INVENTORY-SERVICE
+         uri: lb://INVENTORY-SERVICE
+         predicates:
+           - Path=/api/v1/inventory/**
+       - id: NOTIFICATION-SERVICE
+         uri: lb://NOTIFICATION-SERVICE
+         predicates:
+           - Path=/api/v1/notification/**
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka:password@localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+

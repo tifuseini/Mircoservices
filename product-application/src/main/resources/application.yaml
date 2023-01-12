@@ -1,0 +1,32 @@
+server:
+  port: 8082
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka:password@localhost:8761/eureka/
+  instance:
+    hostname: localhost
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+spring:
+    application:
+        name: PRODUCT-APPLICATION
+    zipkin:
+      base-url: http://localhost:9411
+    sleuth:
+      sampler:
+        probability: 1.0
+    kafka:
+      bootstrap-servers: localhost:9092
+      template:
+        default-topic: inventory-test
+      consumer:
+        group-id: inventoryId
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
