@@ -13,4 +13,10 @@ public class KakfaListener {
     public void handleOrderNotification(String message) {
         log.info("Order message received: {}", message);
     }
+
+    @KafkaListener(topics = "inventory-test")
+    public void handleInventoryNotification(String message) {
+        log.info("Inventory message received: {}", message);
+    }
+
 }
