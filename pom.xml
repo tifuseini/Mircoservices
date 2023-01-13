@@ -37,6 +37,5 @@
     <module>api-gateway</module>
     <module>inventory-service</module>
     <module>order-service</module>
-    <module>notification</module>
   </modules>
 </project>
