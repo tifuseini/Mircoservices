@@ -1,4 +1,4 @@
-package com.sosa.productapplication.configs;
+package com.sosa.productapplication.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

@@ -14,25 +14,9 @@ public class InventoryController {
 
     private final InventoryService inventoryService;
 
-    @PostMapping
-    public void createInventory() {
-        inventoryService.sendNotification();
-        log.info("Inventory created");
-    }
-
     @GetMapping
-    public void getInventory() {
+    public String getInventory() {
         log.info("Inventory retrieved");
+        return "Inventory retrieved";
     }
-
-    @DeleteMapping
-    public void deleteInventory() {
-        log.info("Inventory deleted");
-    }
-
-    @PutMapping
-    public void updateInventory() {
-        log.info("Inventory updated");
-    }
-
 }

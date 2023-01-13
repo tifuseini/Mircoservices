@@ -14,31 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class OrderController {
 
-    private final OrderService orderService;
-
-//    @PostMapping
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void createOrder(@RequestBody Order order) {
-//        orderService.createOrder(order);
-//    }
-
-    @PostMapping
-    public void createOrder(){
-        log.info("Order created");
-    }
-
     @GetMapping
-    public void getOrder(){
+    public String getOrder() {
         log.info("Order retrieved");
+        return "Order retrieved";
     }
 
-    @DeleteMapping
-    public void deleteOrder(){
-        log.info("Order deleted");
-    }
 
-    @PutMapping
-    public void updateOrder(){
-        log.info("Order updated");
-    }
 }

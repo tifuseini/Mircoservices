@@ -14,6 +14,7 @@ management:
       exposure:
         include: prometheus
 spring:
+  security:
     application:
         name: PRODUCT-APPLICATION
     zipkin:
@@ -29,4 +30,8 @@ spring:
         group-id: inventoryId
         key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
         value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri:
 
