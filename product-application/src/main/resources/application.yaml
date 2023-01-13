@@ -14,9 +14,9 @@ management:
       exposure:
         include: prometheus
 spring:
+  application:
+    name: PRODUCT-APPLICATION
   security:
-    application:
-        name: PRODUCT-APPLICATION
     zipkin:
       base-url: http://localhost:9411
     sleuth:
