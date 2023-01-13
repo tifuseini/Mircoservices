@@ -1,6 +1,12 @@
 server:
   port: 8084
 spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      group-id: notification-service
   application:
     name: NOTIFICATION-SERVICE
 
@@ -12,3 +18,5 @@ eureka:
       defaultZone: http://eureka:password@localhost:8761/eureka/
   instance:
     hostname: localhost
+
+

@@ -1,5 +1,7 @@
 package com.sosa.orderservice.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sosa.orderservice.dto.OrderRequest;
 import com.sosa.orderservice.event.OrderPlaced;
 import com.sosa.orderservice.models.Order;
@@ -16,12 +18,15 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class OrderController {
 
-    private final KafkaTemplate<String, OrderPlaced> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
+
+    private final ObjectMapper objectMapper;
 
     @GetMapping
-    public String getOrder() {
+    public String getOrder() throws JsonProcessingException {
         log.info("Order retrieved");
-        kafkaTemplate.send("order-test", new OrderPlaced("1", "1", 1, "1"));
+        var message = objectMapper.writeValueAsString(new OrderPlaced("1", "1", 1, "1"));
+        kafkaTemplate.send("order-test", message);
         return "Order retrieved";
     }
 

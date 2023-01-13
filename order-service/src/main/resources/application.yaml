@@ -8,7 +8,7 @@ spring:
       default-topic: order-test
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.JsonSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
   application:
     name: ORDER-SERVICE
   flyway:
