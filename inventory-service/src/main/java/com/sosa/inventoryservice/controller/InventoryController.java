@@ -1,5 +1,7 @@
 package com.sosa.inventoryservice.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sosa.inventoryservice.event.InventoryEvent;
 import com.sosa.inventoryservice.models.Inventory;
 import com.sosa.inventoryservice.service.InventoryService;
@@ -16,12 +18,14 @@ public class InventoryController {
 
     private final InventoryService inventoryService;
 
-    private final KafkaTemplate<String,Object> kafkaTemplate;
+    private final KafkaTemplate<String,String> kafkaTemplate;
+
+    private final ObjectMapper objectMapper;
 
     @GetMapping
-    public String getInventory() {
+    public String getInventory() throws JsonProcessingException {
         log.info("Inventory retrieved");
-        var message = new InventoryEvent("1", "1", 1, "1");
+        var message = objectMapper.writeValueAsString(new InventoryEvent("1", "1", 1, "1"));
         kafkaTemplate.send("inventory-test", message);
         return "Inventory retrieved";
     }
