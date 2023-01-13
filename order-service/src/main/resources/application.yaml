@@ -2,6 +2,13 @@ server:
   port: 8083
 
 spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    template:
+      default-topic: order-test
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.JsonSerializer
   application:
     name: ORDER-SERVICE
   flyway:
