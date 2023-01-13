@@ -1,4 +1,4 @@
-package com.sosa.productapplication.controller;
+package com.sosa.paymentapplication.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,7 @@ public class PaymentController {
 
     @GetMapping
     public String getPayment() {
-        log.info("Product from Application retrieved");
-        return "Product from application retrieved";
+        log.info("Payment retrieved");
+        return "Payment received";
     }
 }

@@ -11,7 +11,7 @@
 	<groupId>com.sosa</groupId>
 	<artifactId>product-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>product-application</name>
+	<name>payment-application</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

@@ -32,7 +32,7 @@
 
   <modules>
     <module>product-service</module>
-    <module>product-application</module>
+    <module>payment-application</module>
     <module>discovery-service</module>
     <module>api-gateway</module>
     <module>inventory-service</module>
