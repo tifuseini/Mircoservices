@@ -12,6 +12,10 @@ spring:
   cloud:
     gateway:
       routes:
+       - id: NESTJS
+         uri: lb:http://localhost:3000
+         predicates:
+           - Path=/
        - id: PRODUCT-SERVICE
          uri: lb://PRODUCT-SERVICE
          predicates:
