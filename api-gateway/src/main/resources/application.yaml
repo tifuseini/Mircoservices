@@ -11,6 +11,9 @@ spring:
     name: API-GATEWAY
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
        - id: NESTJS
          uri: lb:http://localhost:3000

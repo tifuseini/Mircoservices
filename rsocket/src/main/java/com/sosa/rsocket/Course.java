@@ -19,4 +19,8 @@ public class Course {
     private ZonedDateTime createdDate = ZonedDateTime.now();
 
     private String courseName;
+
+    public Course(String s) {
+        this.courseName = s;
+    }
 }
